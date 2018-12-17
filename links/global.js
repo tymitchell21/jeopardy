@@ -9,7 +9,7 @@ const categoryPromises = categoryIDs
 
 Promise.all(categoryPromises).then(function(categoryObjects) {
     
-    let jeopardyGrid = new JeopardyGrid(6, 5, 'questions', JeopardyCell, categoryObjects)
+    let jeopardyGrid = new JeopardyGrid(6, 5, 'questions', undefined, categoryObjects, 'categories')
 
     jeopardyGrid.cells.map((row,rowIndex) => {
         row.map((cell, cellIndex) => {
@@ -22,5 +22,4 @@ Promise.all(categoryPromises).then(function(categoryObjects) {
             })
         })
     })
-    console.log(jeopardyGrid.categoryObjects)
 })

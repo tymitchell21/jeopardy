@@ -5,7 +5,6 @@ function Grid (rowNum, columnNum, destination, cellConstructor = Cell) {
     this.cellConstructor = cellConstructor
     this.cells = []
 
-    console.log(this.destination)
     this.createGrid()
     this.drawGrid(destination)
 }
