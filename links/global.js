@@ -9,7 +9,18 @@ const categoryPromises = categoryIDs
 
 Promise.all(categoryPromises).then(function(categoryObjects) {
     
-    let jeopardyGrid = new JeopardyGrid(6, 6, 'questions', categoryObjects)
+    let jeopardyGrid = new JeopardyGrid(6, 5, 'questions', JeopardyCell, categoryObjects)
 
-    console.log(jeopardyGrid)
+    jeopardyGrid.cells.map((row,rowIndex) => {
+        row.map((cell, cellIndex) => {
+            const value = document.createElement('a')
+            value.innerHTML = jeopardyGrid.categoryObjects[rowIndex].clues[cellIndex].value
+            cell.element.appendChild(value)
+
+            cell.element.addEventListener('click', () => {
+                cell.element.innerHTML = 'clicked bitch'
+            })
+        })
+    })
+    console.log(jeopardyGrid.categoryObjects)
 })

@@ -1,7 +1,8 @@
-function Grid (rowNum, columnNum, destination) {
+function Grid (rowNum, columnNum, destination, cellConstructor = Cell) {
     this.rowNum = rowNum
     this.columnNum = columnNum
     this.destination = destination
+    this.cellConstructor = cellConstructor
     this.cells = []
 
     console.log(this.destination)
@@ -19,7 +20,7 @@ Grid.prototype.createGrid = function () {
     for (let row=0; row<this.rowNum; row++) {
         this.cells.push([])
         for (let column=0; column<this.columnNum; column++) {
-            this.cells[row].push(new Cell(row, column, 'cell'))
+            this.cells[row].push(new this.cellConstructor(row, column, 'cell'))
         }
     }
 }
@@ -54,28 +55,4 @@ Grid.prototype.neighborCells = function (cell) {
         }
     }
     return neighborsArray
-}
-
-function Cell (row, column,className) {
-    this.row = row
-    this.column = column
-    this.className = className
-    this.element = this.createCell()
-}
-
-Cell.prototype.createCell = function () {
-    const newCell = document.createElement('div')
-
-    newCell.dataset.row = this.row
-    newCell.dataset.column = this.column
-
-    newCell.classList.add(this.className)
-
-    return newCell
-}
-
-Cell.prototype.changeClass = function (oldClass, newClass) {
-    this.className = newClass
-    this.element.classList.remove(oldClass)
-    this.element.classList.add(newClass)
 }

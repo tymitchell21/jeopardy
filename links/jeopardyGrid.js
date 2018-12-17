@@ -1,5 +1,5 @@
-function JeopardyGrid (rowNum, columnNum, destination, categoryObjects) {
-    Grid.call(this, rowNum, columnNum, destination)
+function JeopardyGrid (rowNum, columnNum, destination, cellConstructor, categoryObjects) {
+    Grid.call(this, rowNum, columnNum, destination, cellConstructor)
 
     this.categoryObjects = categoryObjects
 }
