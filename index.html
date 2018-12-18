@@ -7,21 +7,38 @@
     <title>Jeopardy</title>
 
     <link rel="stylesheet" href="links/style.css">
-    <script src="links/global.js" async></script>
-    <script src="links/Grid.js" async></script>
-    <script src="links/Cell.js" async></script>
-    <script src="links/JeopardyGrid.js" async></script>
-    <script src="links/JeopardyCell.js" async></script>
 </head>
 <body>
     <div id='main-wrap'>
         <header id='header'>
+            <div id="player1">
+                <h1>Player 1</h1>
+                <h2 id='player1-score'>0</h2>
+            </div>
             <img src="links/img/logo.png" alt="Logo Not Found">
+            <div id="player2">
+                <h1>Player 2</h1>
+                <h2 id='player1-score'>0</h2>
+            </div>
         </header>
         <div id='board-wrap'>
             <div id='categories'></div>
             <div id='questions'></div>
         </div>
     </div>
+    <div id='answer-box'>
+        <h1 id="question-display">Who died?</h1>
+        <div>
+            <input id="answer-input">
+            <button id="submit-answer">Submit</button>
+        </div>
+    </div>
+
+    <script src="links/global.js"></script>
+    <script src="links/Grid.js"></script>
+    <script src="links/Cell.js"></script>
+    <script src="links/JeopardyGrid.js"></script>
+    <script src="links/JeopardyCell.js"></script>
+    <script src="links/AnswerBox.js"></script>
 </body>
 </html>

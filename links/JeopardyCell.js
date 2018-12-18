@@ -1,20 +1,29 @@
-function JeopardyCell (row, column, className, categoryTitle) {
-    Cell.call(this, row, column, className)
-
+function JeopardyCell(rowIndex, cellIndex, className, grid, categoryTitle = null) {
     this.categoryTitle = categoryTitle
-    this.element = this.createCell()
+    Cell.call(this, rowIndex, cellIndex, className, grid)
 }
 
 JeopardyCell.prototype = Object.create(Cell.prototype)
+JeopardyCell.prototype.constructor = JeopardyCell
 
 JeopardyCell.prototype.createCell = function () {
-    const newCell = document.createElement('div')
+    Cell.prototype.createCell.call(this)
 
-    newCell.dataset.row = this.row
-    newCell.dataset.column = this.column
-    newCell.dataset.category = this.categoryTitle
+    if (this.categoryTitle) {
+        this.element.dataset.category = this.categoryTitle
+    } else {
+        const value = document.createElement('a')
+        const category = this.grid.categoryObjects[this.rowIndex]
+        value.innerHTML = category.clues[this.cellIndex].value
+        this.element.appendChild(value)
 
-    newCell.classList.add(this.className)
+        this.onClickBound = this.onClickUnbound.bind(this)
+        this.element.addEventListener('click', this.onClickBound)
+    }
+    return this.element
+}
 
-    return newCell
+JeopardyCell.prototype.onClickUnbound = function () {
+    this.grid.addNewQuestionBox(this.rowIndex, this.cellIndex)
+    this.element.removeEventListener('click', this.onClickBound)
 }

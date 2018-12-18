@@ -1,19 +1,21 @@
-function Cell (row, column,className) {
-    this.row = row
-    this.column = column
+function Cell (rowIndex, cellIndex, className, grid) {
+    this.rowIndex = rowIndex
+    this.cellIndex = cellIndex
     this.className = className
-    this.element = this.createCell()
+    this.grid = grid
+    
+    this.createCell()
 }
 
 Cell.prototype.createCell = function () {
-    const newCell = document.createElement('div')
+    this.element = document.createElement('div')
 
-    newCell.dataset.row = this.row
-    newCell.dataset.column = this.column
+    this.element.dataset.rowIndex = this.rowIndex
+    this.element.dataset.cellIndex = this.cellIndex
 
-    newCell.classList.add(this.className)
+    this.element.classList.add(this.className)
 
-    return newCell
+    return this.element
 }
 
 Cell.prototype.changeClass = function (oldClass, newClass) {

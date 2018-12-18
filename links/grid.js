@@ -19,7 +19,7 @@ Grid.prototype.createGrid = function () {
     for (let row=0; row<this.rowNum; row++) {
         this.cells.push([])
         for (let column=0; column<this.columnNum; column++) {
-            this.cells[row].push(new this.cellConstructor(row, column, 'cell'))
+            this.cells[row].push(new this.cellConstructor(row, column, 'cell', this))
         }
     }
 }
