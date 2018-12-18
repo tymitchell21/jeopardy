@@ -33,5 +33,5 @@ JeopardyGrid.prototype.displayCategories = function() {
 }
 
 JeopardyGrid.prototype.addNewQuestionBox = function(rowIndex, cellIndex) {
-    let answerBox = new QuestionBox(this.categoryObjects, 'answer-box', 'question-display', rowIndex, cellIndex)
+    let questionBox = new QuestionBox(this.categoryObjects, 'answer-box', 'question-display', rowIndex, cellIndex, this)
 }

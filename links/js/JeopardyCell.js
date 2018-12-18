@@ -24,6 +24,7 @@ JeopardyCell.prototype.createCell = function () {
 }
 
 JeopardyCell.prototype.onClickUnbound = function () {
-    this.grid.addNewQuestionBox(this.rowIndex, this.cellIndex)
+    this.grid.addNewQuestionBox(this.rowIndex, this.cellIndex) 
     this.element.removeEventListener('click', this.onClickBound)
+    this.element.innerHTML = ''
 }
