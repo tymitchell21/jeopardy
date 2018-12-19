@@ -35,6 +35,9 @@ class GameManager {
         this.whoseTurn = !this.whoseTurn;
         this.showWhoTurnItIs();
     }
+    ranOutOfTime() {
+        
+    }
 }
 
 
