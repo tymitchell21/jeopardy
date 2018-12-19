@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Jeopardy</title>
 
@@ -33,10 +32,10 @@
     </div>
     <div id='answer-box'>
         <h1 id="question-display">Who died?</h1>
-        <div>
-            <input id="answer-input">
-            <button id="submit-answer">Submit</button>
-        </div>
+        <form id="submit-form">
+            <input type="text" id="answer-input">
+            <input type="submit" id="submit-answer"></input>
+        </form>
     </div>
 
     <script src="links/js/global.js"></script>
