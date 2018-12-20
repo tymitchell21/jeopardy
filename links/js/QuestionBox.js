@@ -36,10 +36,10 @@ class QuestionBox {
     }
 
     unboundCallCheckAnswerFunction(timerVar) {
+        event.preventDefault()
         clearInterval(timerVar)
         this.grid.gameManager.checkAnswer(this.rowIndex, this.cellIndex);
         this.submitButtonElement.removeEventListener('submit', this.boundCallCheckAnswerFunction);
-        event.preventDefault()
     }
 }
 
