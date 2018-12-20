@@ -1,14 +1,17 @@
 body {
     display: flex;
     justify-content: center;
-    background-image: url('../img/background.jpeg');
-    background-size: cover;
+    background-image: url('../img/background.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover; 
     background-repeat: no-repeat;
 }
 #main-wrap {
     display: flex;
     flex-direction: column;
     background-color: navy;
+    opacity: 0.8;
     height: fit-content;
     width: fit-content;
     margin: 50px 0px;
@@ -97,6 +100,7 @@ body {
 }
 #timer {
     font-size: 3em;
+    color: gold;
 }
 #player1 {
     display: flex;

@@ -2,15 +2,20 @@ class GameManager {
     constructor(categoryObjects, grid) {
         this.categoryObjects = categoryObjects
         this.grid = grid
+
         this.player1 = new Player('Player1', 0, 'player1-score')
         this.player2 = new Player('Player2', 0, 'player2-score')
+
         this.turnElement = document.querySelector('#who-turn')
         this.answerValueElement = document.querySelector('#answer-input')
         this.questionBoxElement = document.querySelector('#answer-box')
-        this.whoseTurn = Math.floor(Math.random() * 2)
+        this.questionElement = document.querySelector('#question-display')
+
         this.showWhoTurnItIs()
     }
     showWhoTurnItIs() {
+        this.whoseTurn = Math.floor(Math.random() * 2)
+
         if (this.whoseTurn == 0) {
             this.turnElement.innerHTML = `It is Player One's turn`
             this.playerTurn = this.player1
@@ -20,18 +25,22 @@ class GameManager {
             this.playerTurn = this.player2
         }
     }
-    checkAnswer(rowIndex, cellIndex) {
-        let answer = this.answerValueElement.value
-        let category = this.categoryObjects[rowIndex]
-        let question = category.clues[cellIndex]
-        if (answer.toLowerCase() == question.answer.toLowerCase()) {
-            this.playerTurn.score += question.value
+    checkAnswer(questionAnswer, value) {
+        let userAnswer = this.answerValueElement.value
+        console.log(questionAnswer, userAnswer)
+        if (userAnswer.toLowerCase() == questionAnswer.toLowerCase()) {
+            this.playerTurn.score += Number(value)
         }
         else {
-            this.playerTurn.score -= question.value
+            this.playerTurn.score -= Number(value)
         }
-        this.answerValueElement.value = ''
-        this.questionBoxElement.style.display = 'none'
+
+        this.questionElement.innerHTML = questionAnswer
+        setTimeout(() => {
+            this.answerValueElement.value = ''
+            this.questionBoxElement.style.display = 'none'
+        }, 2000)
+
         this.playerTurn.updateScore()
         this.whoseTurn = !this.whoseTurn
         this.showWhoTurnItIs()
