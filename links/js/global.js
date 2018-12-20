@@ -8,5 +8,4 @@ const categoryPromises = categoryIDs
     )
 Promise.all(categoryPromises).then(function(categoryObjects) {
     let jeopardyGrid = new JeopardyGrid(6, 5, 'questions', JeopardyCell, categoryObjects, 'categories')
-    console.log(jeopardyGrid)
 })

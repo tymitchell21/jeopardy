@@ -11,6 +11,9 @@ class QuestionBox {
         this.answerBoxElement = document.getElementById(destination);
         this.answerBoxElement.style.display = 'flex';
 
+        this.answerInputElement = document.querySelector('#answer-input')
+        this.answerInputElement.focus()
+
         let timeLeft = 10
         let timerVar = setInterval(questionTimer.bind(this), 1000)
 
@@ -18,7 +21,6 @@ class QuestionBox {
             let timer = document.querySelector('#timer')
             timer.innerHTML = timeLeft
             if (timeLeft <= 0) {
-                timeLeft = 10
                 this.grid.gameManager.checkAnswer(this.rowIndex, this.cellIndex)
                 clearInterval(timerVar)
             }
